@@ -9,6 +9,8 @@ import { useAppConfig } from "../../components/AppConfig"
 import CognitoHandler from "./cognito-handler.js"
 import { useUpdate } from "react-use"
 
+export const authProviders = ["cognito"]
+
 const AuthContext = createContext({ authProvider: "none" })
 
 export const AuthProvider = ({ children }) => {
@@ -35,7 +37,7 @@ export const AuthProvider = ({ children }) => {
     return () => {
       clearInterval(interval)
     }
-  })
+  }, [handler, forceUpdate])
 
   const contextValue = useMemo(
     () => ({
@@ -46,7 +48,7 @@ export const AuthProvider = ({ children }) => {
       logout: handler.logout,
       login: handler.login,
     }),
-    [handler, handler.hasChanged, handler.isLoggedIn]
+    [handler]
   )
 
   return (
