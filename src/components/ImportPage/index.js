@@ -25,7 +25,7 @@ import ImportFromYoutubeUrls from "../ImportFromYoutubeUrls"
 import { FaGoogleDrive, FaYoutube } from "react-icons/fa"
 import usePosthog from "../../utils/use-posthog"
 import promptAndGetSamplesFromLocalDirectory from "./prompt-and-get-samples-from-local-directory.js"
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next"
 
 const ButtonBase = styled(MuiButton)({
   width: 240,
@@ -76,9 +76,9 @@ const Button = ({
       ? isEmpty(user)
       : isEmpty(authConfig)
     : false
-  
+
   const { t, i18n } = useTranslation()
-  
+
   return (
     <SelectDialogContext.Consumer>
       {({ onChangeDialog }) => {
@@ -99,17 +99,17 @@ const Button = ({
               <div>{children}</div>
               {desktopOnly && (
                 <DesktopOnlyText className={classnames({ disabled })}>
-                  {(t("desktop-only")).toUpperCase()}
+                  {t("desktop-only").toUpperCase()}
                 </DesktopOnlyText>
               )}
               {authConfiguredOnly && isEmpty(authConfig) && (
                 <DesktopOnlyText className={classnames({ disabled })}>
-                  {(t("auth-must-be-configured")).toUpperCase()}
+                  {t("auth-must-be-configured").toUpperCase()}
                 </DesktopOnlyText>
               )}
               {signedInOnly && isEmpty(user) && (
                 <DesktopOnlyText className={classnames({ disabled })}>
-                  {(t("must-be-signed-in")).toUpperCase()}
+                  {t("must-be-signed-in").toUpperCase()}
                 </DesktopOnlyText>
               )}
             </div>
@@ -206,7 +206,7 @@ export default ({
           Icon={FaYoutube}
           desktopOnly
         >
-          {t("import-from")}{" "} Youtube URLs
+          {t("import-from")} Youtube URLs
         </Button>
         {file && (
           <Button
@@ -218,7 +218,7 @@ export default ({
             signedInOnly={true}
             user={user}
           >
-            {t("import-from")}{" "}S3
+            {t("import-from")} S3
           </Button>
         )}
         <Button
@@ -227,10 +227,10 @@ export default ({
           Icon={FaGoogleDrive}
           onAddSamples={onAddSamples}
         >
-          {t("import-from")}{" "} Google Drive
+          {t("import-from")} Google Drive
         </Button>
         <Button dialog="import-csv-json" Icon={DescriptionIcon}>
-          {t("import-from")}{" "} CSV / JSON
+          {t("import-from")} CSV / JSON
         </Button>
         <ImportTextSnippetsDialog
           open={selectedDialog === "import-text-snippets"}
