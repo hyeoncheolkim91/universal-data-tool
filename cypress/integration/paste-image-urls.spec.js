@@ -5,44 +5,45 @@ const imageUrls = [
 ]
 
 describe("Create a new", () => {
-  it("should be able to create", () => {
-    cy.visit("http://localhost:6001")
-    cy.contains("New File").click()
-  })
+    it('should be able to create', () => {
+        cy.visit("/")
+        cy.contains("New File").click()
+    })
 
-  it("should be able to open paste", () => {
-    cy.contains("Samples").click()
-    cy.contains("Import").click()
-    cy.contains("Paste URLs").click()
-  })
+    it('should be able to open paste', () => {
+        cy.contains("Samples").click()
+        cy.contains("Import").click()
+        cy.contains("Paste URLs").click()
+    });
 
-  it("should be able to paste image urls", () => {
-    const imagesWithNewLines = imageUrls.join("{enter}")
-    cy.get("textarea").type(imagesWithNewLines)
-  })
 
-  it("should be able to add that samples", () => {
-    cy.contains("Auto Detect File Type").click({ force: true })
-    cy.contains("Image URLs").click({ force: true })
-    cy.contains("Add Samples").click()
-  })
+    it('should be able to paste image urls', () => {
+        const imagesWithNewLines = imageUrls.join("{enter}")
+        cy.get("textarea").type(imagesWithNewLines)
+    });
 
-  it("should be able to go to setup", () => {
-    cy.contains("Setup").click()
-  })
+    it('should be able to add that samples', () => {
+        cy.contains("Auto Detect File Type").click({ force: true })
+        cy.contains("Image URLs").click({ force: true })
+        cy.contains("Add Samples").click()
+    });
 
-  it("should be able to go to Image Classification", () => {
-    cy.contains("Image Classification").click()
-  })
+    it('should be able to go to setup', () => {
+        cy.contains("Setup").click()
+    });
 
-  it("should be able to see samples", () => {
-    cy.contains("Samples").click()
-    cy.contains("2").click()
-  })
-  it("should be able to label image", () => {
-    cy.wait(200)
-    cy.get("body").click().type("{enter}")
-    cy.wait(200)
-    cy.get("body").click().type("{enter}")
-  })
+    it('should be able to go to Image Classification', () => {
+        cy.contains("Image Classification").click()
+    });
+
+    it('should be able to see samples', () => {
+        cy.contains("Samples").click()
+        cy.contains("2").click()
+    });
+    it('should be able to label image', () => {
+        cy.wait(200)
+        cy.get("body").click().type("{enter}")
+        cy.wait(200)
+        cy.get("body").click().type("{enter}")
+    })
 })
